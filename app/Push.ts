@@ -76,8 +76,8 @@ export async function sendWebPush(message: string | null): Promise<void> {
   const pushBody = {
     title: 'Test Push',
     body: message ?? 'This is a test push message',
-    image: '/next.png',
-    icon: 'nextjs.png',
+    image: '',
+    icon: '',
     url: 'https://google.com',
   };
   const res = await fetch(endPointUrl, {
