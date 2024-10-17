@@ -89,3 +89,40 @@ export async function sendWebPush(message: string | null): Promise<void> {
   const result = await res.json();
   console.log(result);
 }
+
+export async function unsubscribe(onUnsubscribe?: () => void): Promise<void> {
+  try {
+    const registration = await navigator.serviceWorker.ready;
+    const subscription = await registration.pushManager.getSubscription();
+
+    if (subscription) {
+      // Отписка от подписки
+      await subscription.unsubscribe();
+      console.info('Unsubscribed successfully:', subscription.toJSON());
+
+      // Удаление подписки с сервера (если нужно)
+      await removeSubscription(subscription);
+
+      // Вызов коллбэка для действий после отписки
+      onUnsubscribe && onUnsubscribe();
+    } else {
+      console.warn('No subscription found to unsubscribe');
+    }
+  } catch (error) {
+    console.error('Failed to unsubscribe:', error);
+  }
+}
+
+async function removeSubscription(subscription: PushSubscription): Promise<void> {
+  const endpointUrl = '/api/web-push/remove-subscription';
+  const res = await fetch(endpointUrl, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ subscription }),
+  });
+
+  const result = await res.json();
+  console.log(result);
+}

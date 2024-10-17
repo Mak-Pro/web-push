@@ -6,6 +6,7 @@ import {
   notificationUnsupported,
   registerAndSubscribe,
   sendWebPush,
+  unsubscribe,
 } from './Push';
 
 export default function Home() {
@@ -33,6 +34,10 @@ export default function Home() {
             : subscription
               ? 'Notification allowed'
               : 'Allow notification'}
+        </button>
+
+        <button onClick={() => unsubscribe()} className={subscription ? styles.activeButton : ''}>
+          Unsubscribe
         </button>
         {subscription ? (
           <>
