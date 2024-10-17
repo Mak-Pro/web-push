@@ -5,7 +5,6 @@ webpush.setVapidDetails(
   process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY as string,
   process.env.NEXT_PUBLIC_VAPID_PRIVATE_KEY as string,
 );
-
 let subscription: PushSubscription;
 
 export async function POST(request: any) {
