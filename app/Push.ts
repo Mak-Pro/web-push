@@ -32,7 +32,8 @@ async function subscribe(onSubscribe: (subs: PushSubscription | null) => void): 
     .then((registration: ServiceWorkerRegistration) => {
       return registration.pushManager.subscribe({
         userVisibleOnly: true,
-        applicationServerKey: process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY,
+        applicationServerKey:
+          'BETvXTi2xVhQSj2lWNPuci7q57GTCgxwQMlJBpsG3EH-TsQHMnNpKd3NkVtR1Mu9tOIN_lBYhNM1gT8BgDPQUnY',
       });
     })
     .then((subscription: PushSubscription) => {

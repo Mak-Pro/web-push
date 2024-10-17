@@ -2,8 +2,8 @@ import webpush from 'web-push';
 
 webpush.setVapidDetails(
   'mailto:maksprocode@gmail.com',
-  process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY as string,
-  process.env.NEXT_PUBLIC_VAPID_PRIVATE_KEY as string,
+  'BETvXTi2xVhQSj2lWNPuci7q57GTCgxwQMlJBpsG3EH-TsQHMnNpKd3NkVtR1Mu9tOIN_lBYhNM1gT8BgDPQUnY',
+  'bPW9F-sTwjvtfPKpcDcPWF29HOquHo9oeeEWOhtN8es',
 );
 let subscription: PushSubscription;
 
